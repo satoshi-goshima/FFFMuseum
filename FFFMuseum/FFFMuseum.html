@@ -1,0 +1,153 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>藤ミュへＧＯ！</title>
+</head>
+
+<body>
+    <header>
+        <div class="title-box">
+            <img src="img/header.jpg" alt="header_img">
+            <div class="title_wrapper outline">
+                藤子・<span style="cursor:pointer" onclick="ring();">Ｆ</span>・不二雄ミュージアムへ行こう！
+            </div>
+        </div>
+    </header>
+
+    <audio id="openning" preload="auto">
+        <source src="sounds/openning.mp3" type="audio/mp3">
+        <p>※お使いのブラウザでは音は鳴りません。</p>
+    </audio>
+    
+	<audio id="requiem" preload="auto">
+        <source src="sounds/requiem.mp3" type="audio/mp3">
+        <p>※お使いのブラウザでは音は鳴りません。</p>
+    </audio>
+
+<p class="fantasy">&lt;story&gt;</p>
+<div id="text_q"></div>
+<h2></h2>
+<div id="image_place"></div>
+<p class="fantasy">&lt;select&gt;</p>
+<div id="text_s"></div>
+
+<footer>
+	<div class="title-box">
+		<img src="img/footer.jpg" alt="footer_img">
+	</div>
+</footer>
+
+<script type="text/javascript">
+
+//音を鳴らす
+    function ring() {
+    document.getElementById("openning").play();
+    }
+
+	function ring2() {
+    document.getElementById("requiem").play();
+    }
+
+//ストーリー
+qa = new Array();
+qa[0] = ["さぁ出発だ！<br>新千歳空港までは何を使っていこうかな。","マイカー","快速エアポート","ＭＫタクシー",-20,0,-30];
+qa[1] = ["朝早く起きれたし時間に余裕があるぞ<br>何線に乗っていこうかな。","総武線快速","新宿経由で小田急線","南武線",0,+50,+100];
+
+//初期設定
+q_sel = 3; //選択肢の数
+
+setReady();
+
+//初期設定
+function setReady() {
+	count = 0; //ストーリー番号
+	my_hp = 10; //HP
+	
+	//最初のストーリー
+	quiz();
+}
+
+//ストーリーと選択肢の表示
+function quiz() {
+	var s, n;
+	//ストーリーを表示する
+	document.getElementById("text_q").innerHTML = (count + 1) + "日目" + "<br>" + qa[count][0];
+	//選択肢
+	s = "";
+	for (n=1;n<=q_sel;n++) {
+		if (qa[count][n] != "") {
+			s += "【<a class=select href='javascript:anser(" + n + ")'>"+ qa[count][n] + "</a>】";
+		}
+	}
+	document.getElementById("text_s").innerHTML = s;
+}
+
+//行動選択結果
+function anser(num) {
+	var s;
+	//s = (count + 1) + "日目："; //今回は使わず
+	//HPの増減
+	my_hp += qa[count][num+q_sel];
+	
+    // ※ ここから今回は使わず ※
+
+    //結果表示
+	//s += "HP";
+	//if (qa[count][num+q_sel] >= 0) s += "+";
+	//s += qa[count][num+q_sel];
+	//document.getElementById("image_jpg").innerHTML = s;
+	
+	//HPのチェック
+	//if (my_hp > 200) my_hp = 200; //上限を超えさせない
+    
+    // ※ ここまで今回は使わず ※
+
+    if (my_hp <= 0) {
+		game_over(); //ゲームオーバー
+	} else {
+		//次の問題を表示
+		count++;
+		if (count < qa.length) {
+			quiz();
+		} else {
+			//終了
+			if (my_hp >= 100) {
+                s = "<p class=clear>Congratulations!!<br></p>"; //グッドエンド
+				s += "<br>";
+				s += "無事到着！<br>";
+				s += "一日中楽しむぞー！！ うぇいうぇい！！！<br>";
+				s += "<div class=img50><img src=img/clear_img.jpg></div>";
+			} else if (my_hp >= 50) {
+				s = "<p class=game_over>GAME OVER</p><br>"; //バッドエンド１
+                s += "新宿駅で迷子になり<br>";
+                s += "入場時間に間に合わず死亡";
+			} else {
+                s = "<p class=game_over>GAME OVER</p><br>"; //バッドエンド２
+				s += "通勤の癖で津田沼行きに乗ってしまい<br>";
+				s += "入場時間に間に合わず死亡";
+			}
+			document.getElementById("text_q").innerHTML = s;
+			//次の選択肢
+			s = "<a class=timemachine href='javascript:setReady()'>タイムマシン</a>";
+			document.getElementById("text_s").innerHTML = s;
+		}
+	}
+}
+
+function game_over() {
+	var s;
+	s = "<p class=game_over>GAME OVER</p><br>";
+	s += "渋滞に巻き込まれて<br>フライトに間に合わず死亡。"; //ゲームオーバー
+	document.getElementById("text_q").innerHTML = s;
+	//次の選択肢
+	s = "<a class=timemachine href='javascript:setReady()'>タイムマシン</a>";
+	document.getElementById("text_s").innerHTML = s;
+}
+
+</script>
+</body>
+</html>

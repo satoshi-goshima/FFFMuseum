@@ -1,0 +1,148 @@
+@font-face {
+    font-family: "ドラえ文字"; 
+    src: url("../ttf/doraemoji.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: "genkai"; 
+    src: url("../ttf/genkai-mincho.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: "garto"; 
+    src: url("../ttf/garto16.ttf") format('truetype');
+}
+
+body{
+    margin:0;
+    padding:0;
+    text-align:center;
+    font-size: 2vw;
+}
+
+header{
+    background-color: #fff;
+    text-align: center;
+}
+
+footer{
+    margin-top: 20px;
+}
+
+.outline {
+    display        : inline-block;
+    color          : #ffffff;            /* 文字の色 */
+    letter-spacing : 4px;                /* 文字間 */
+    text-shadow    : 
+        2px  2px 1px #003366,
+        -2px  2px 1px #003366,
+        2px -2px 1px #003366,
+        -2px -2px 1px #003366,
+        2px  0px 1px #003366,
+        0px  2px 1px #003366,
+        -2px  0px 1px #003366,
+         0px -2px 1px #003366;        /* 文字の影 */
+}
+
+.title-box{
+    position: relative;
+}
+
+.title_wrapper{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    text-align: center;
+    font-size: 3vw;
+    color: #FFF;
+}
+
+.title_wrapper span{
+    color: #0066CC;
+    font-family: "ドラえ文字";
+    src: url("../ttf/doraemoji.ttf");
+    text-shadow: 
+    2px  2px 1px #FFF,
+    -2px  2px 1px #FFF,
+    2px -2px 1px #FFF,
+    -2px -2px 1px #FFF,
+    2px  0px 1px #FFF,
+    0px  2px 1px #FFF,
+    -2px  0px 1px #FFF,
+    0px -2px 1px #FFF;        /* 文字の影 */
+}
+
+.title-box div{
+    white-space: nowrap;
+}
+
+.clear{
+    font-size: 4vw;
+    color: gold;
+    font-family: "garto";
+    src: url("../ttf/garto16.ttf");
+    border: none;
+    display        : inline-block;
+    letter-spacing : 2px;                /* 文字間 */
+    text-shadow    : 
+        2px  2px 1px #003366,
+        -2px  2px 1px #003366,
+        2px -2px 1px #003366,
+        -2px -2px 1px #003366,
+        2px  0px 1px #003366,
+        0px  2px 1px #003366,
+        -2px  0px 1px #003366,
+        0px -2px 1px #003366; 
+}
+
+.game_over{
+    font-size: 3vw;
+    color: crimson; 
+    font-family: "genkai";
+    src: url("../ttf/genkai-mincho.ttf");
+    border: none;
+    height: 10px;
+}
+
+main{
+    border-bottom:1px solid #ccc;
+}
+
+footer{
+    background-color: #fff;
+    text-align: center;
+}
+
+p{
+    font-size: 100%;
+    text-align: center;
+    border-bottom:1px solid #fff;
+    height:20px;
+}
+
+.fantasy{
+    font-family: fantasy;
+}
+
+.select{
+    text-decoration: none;
+}
+
+.timemachine{
+    text-decoration: none;
+    color: #0066CC;
+    font-family: "ドラえ文字";
+    src: url("../ttf/doraemoji.ttf");
+}
+
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.img50{
+    width: 30%;
+    margin: 0 auto;
+}
